@@ -21,13 +21,15 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>){
+}>) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Navbar />
-          <main className="flex-grow">{children}</main>
+        <main className="flex-grow">
+          <div className="main-container">{children}</div>
+        </main>
       </body>
     </html>
   );
-};
+}

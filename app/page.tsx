@@ -7,9 +7,38 @@ import { PiHeartFill } from "react-icons/pi";
 import "./globals.css";
 // import Link from "next/link";
 
+// Data Wali Murid (JSON)
+const waliMurid = [
+  {
+    foto: "/assets/images/wali1.jpg",
+    nama: "Budi Santoso",
+    deskripsi: "Sekolah ini luar biasa! Anak saya jadi lebih semangat belajar setiap hari dan hasilnya pun semakin meningkat.",
+  },
+  {
+    foto: "/assets/images/wali2.jpg",
+    nama: "Siti Aminah",
+    deskripsi: "Guru-gurunya sangat sabar dan perhatian. Lingkungannya aman dan nyaman untuk anak-anak.",
+  },
+  {
+    foto: "/assets/images/wali3.jpg",
+    nama: "Ahmad Fauzi",
+    deskripsi: "Program pembelajarannya kreatif, membuat anak saya jadi lebih percaya diri dan aktif di kelas.",
+  },
+  {
+    foto: "/assets/images/wali4.jpeg",
+    nama: "Maria Clara",
+    deskripsi: "Komunikasi antara sekolah dan orang tua sangat baik. Saya selalu tahu perkembangan anak setiap minggunya.",
+  },
+  {
+    foto: "/assets/images/wali4.jpeg",
+    nama: "Maria Clara",
+    deskripsi: "Komunikasi antara sekolah dan orang tua sangat baik. Saya selalu tahu perkembangan anak setiap minggunya.",
+  },
+];
+
 export default function HomePage() {
   return (
-    <main className="flex pt-20 flex-col">
+    <main className="flex flex-col">
       {/* Hero Section */}
       <section className="py-12 px-20 relative overflow-hidden">
         {/* Background SVG wave */}
@@ -28,13 +57,13 @@ export default function HomePage() {
               <span className="text-[#FFD700]">Tangerang</span>
             </h1>
             <p className="italic text-gray-400 text-lg font-bold mt-5">&quot;Lorem Ipsum is simply dummy text&quot;</p>
-            <div className="flex items-center mt-15 gap-2 text-gray-700">
+            {/* <div className="flex items-center mt-15 gap-2 text-gray-700">
               <FaMapMarkerAlt className="text-red-500" />
               <span>Sukamantri, Kec. Balajara, Kabupaten Tangerang, Banten 15810</span>
-            </div>
+            </div> */}
 
             {/* Social */}
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-4 mt-15">
               <a href="https://wa.me/628123456789" target="_blank" rel="noopener noreferrer">
                 <Image src="/assets/icons/wa.png" alt="WhatsApp" width={40} height={40} className="hover:opacity-80 transition" />
               </a>
@@ -47,40 +76,32 @@ export default function HomePage() {
                 <Image src="/assets/icons/instagram.png" alt="Instagram" width={40} height={40} className="hover:opacity-80 transition" />
               </a>
             </div>
-            <div className="flex gap-4 mt-6">
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-full">Kontak Kami</button>
-              <button className="bg-yellow-400 text-black px-4 py-2">Daftar Sekarang</button>
+            <div className="flex gap-4 mt-4">
+              <button className="bg-blue-600 text-white font-bold px-8 py-3 rounded-full">Kontak Kami</button>
+              <button className="bg-yellow-400 text-black font-bold px-8 py-3">Daftar Sekarang</button>
             </div>
           </div>
 
           {/* Right */}
           <div className="relative hidden lg:block">
             <div className="absolute -z-10 w-72 h-72 bg-yellow-400 rounded-full top-0 right-0"></div>
-            <Image
-              src="/assets/images/santri.png"
-              alt="Kepala Sekolah"
-              width={300}
-              height={400}
-              className="relative z-10"
-            />
-            <p
-              className="mt-4 font-bold text-[#FFD700] text-2xl border-b border-white"
-              style={{ textShadow: "2px 1px 2px rgba(0,0,0,0.37)" }}
-            >
+            <Image src="/assets/images/santri.png" alt="Kepala Sekolah" width={400} height={400} className="relative z-10" />
+            <p className="mt-4 font-bold text-[#FFD700] text-2xl border-b border-white" style={{ textShadow: "2px 1px 2px rgba(0,0,0,0.37)" }}>
               Hj. Airin Rachmi Diani
             </p>
             <p className="text-lg text-white">Kepala SMK Al Badar</p>
           </div>
         </div>
       </section>
+
       {/* Sekilas Tentang Kita */}
-      <section className="bg-[#a000ff] text-white py-16 px-30 relative">
+      <section className="bg-[#a000ff] text-white py-16 px-3 md:px-30 relative">
         <div className="max-w-7xl mx-auto px-4 text-center md:text-left">
           <h2 className="text-3xl font-bold text-center mb-10">Sekilas Tentang SMK AL Badar Tangerang</h2>
           <div className="flex flex-col md:flex-row items-center gap-8">
             <Image src="/assets/images/contoh.jpg" alt="Tentang Kita" width={280} height={280} className="rounded-lg" />
             <div className="ml-10">
-              <p className="mb-4">
+              <p className="mb-4 text-justify">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
                 type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
                 Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. and more recently with desktop publishing software like Aldus PageMaker including versions of
@@ -91,13 +112,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      
-      {/* <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" /> */}
 
       {/* Jurusan */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center text-2xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400 after:mx-auto">Jurusan</h2>
+          <h2 className="text-center text-3xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400 after:mx-auto">Jurusan</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { title: "Manajemen Perkantoran", color: "bg-gray-100" },
@@ -114,14 +133,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" /> */}
-
       {/* Program Unggulan */}
-      <section className="bg-purple-700 px-30 text-white py-16">
-        <h2 className="text-center text-2xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400 after:mx-auto">Program Unggulan</h2>
+      <section className="bg-purple-700 px-3 md:px-30 text-white py-16">
+        <h2 className="text-center text-3xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400 after:mx-auto">Program Unggulan</h2>
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex-1">
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+            <p className="text-justify">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+              type specimen book. It has survived not only five centuries
+            </p>
           </div>
           <div className="flex-1 grid grid-cols-2 gap-4">
             {[
@@ -139,12 +159,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" /> */}
-
       {/* Aktivitas */}
-      <section className="py-16 px-16">
+      <section className="py-16 px-3 md:px-16">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-2xl font-bold mb-12 underline decoration-yellow-400">Aktivitas</h2>
+          <h2 className="text-center text-3xl font-bold mb-12 underline decoration-yellow-400">Aktivitas</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {/* Gambar besar */}
@@ -162,73 +180,87 @@ export default function HomePage() {
       <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" />
 
       {/* Kata Wali Murid */}
-      <section className="py-16 mt-20">
+      <section className="py-16 px-3 md:px-10 mt-20">
         <div className="text-center">
-          <h1 className="text-center text-2xl font-bold mb-12 underline decoration-yellow-400">Apa Kata Wali Murid?</h1>
-          {/* <hr className="w-[380px] border-4 border-yellow-400 mx-auto" /> */}
+          <h1 className="text-center text-3xl font-bold mb-12 underline decoration-yellow-400">Apa Kata Wali Murid?</h1>
         </div>
 
         {/* Wrapper Slider */}
         <div className="overflow-hidden pb-5 relative w-full mt-10">
           {/* SLIDE KIRI */}
           <div className="flex animate-slide gap-5">
-            {[...Array(6)].map((_, idx) => (
-              <div key={idx} className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] p-[18px] h-[135px] w-[650px] shrink-0">
-                {/* Foto */}
-                <div>
-                  <div className="h-[100px] w-[100px] rounded-full bg-gray-300 object-cover"></div>
+            {waliMurid.map((wali, idx) => (
+              <div key={idx} className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] p-4 md:p-[18px] h-auto md:h-[135px] w-full md:w-[650px] shrink-0">
+                <div className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] flex-shrink-0">
+                  <Image src={wali.foto} width={100} height={100} alt={wali.nama} className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] rounded-full object-cover bg-gray-300" />
                 </div>
-                {/* Teks */}
-                <div className="pl-8 flex flex-col justify-center">
-                  <p className="text-[15px] leading-[1.5em] line-clamp-3">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula risus at magna tincidunt, et convallis magna laoreet.”</p>
-                  <h6 className="mt-[15px] font-bold">~ John Doe</h6>
+                <div className="pl-4 md:pl-8 flex flex-col justify-center">
+                  <p className="text-sm md:text-[15px] leading-[1.5em]">“{wali.deskripsi}”</p>
+                  <h6 className="mt-2 md:mt-[15px] font-bold">~ {wali.nama}</h6>
                 </div>
               </div>
             ))}
-            {/* Duplicate for seamless loop */}
-            {[...Array(6)].map((_, idx) => (
-              <div key={`dup-${idx}`} className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] p-[18px] h-[135px] w-[650px] shrink-0">
-                <div>
-                  <div className="h-[100px] w-[100px] rounded-full bg-gray-300 object-cover"></div>
+            {waliMurid.map((wali, idx) => (
+              <div key={idx} className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] p-4 md:p-[18px] h-auto md:h-[135px] w-full md:w-[650px] shrink-0">
+                <div className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] flex-shrink-0">
+                  <Image src={wali.foto} width={100} height={100} alt={wali.nama} className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] rounded-full object-cover bg-gray-300" />
                 </div>
-                <div className="pl-8 flex flex-col justify-center">
-                  <p className="text-[15px] leading-[1.5em] line-clamp-3">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula risus at magna tincidunt, et convallis magna laoreet.”</p>
-                  <h6 className="mt-[-15px] font-bold">~ John Doe</h6>
+                <div className="pl-4 md:pl-8 flex flex-col justify-center">
+                  <p className="text-sm md:text-[15px] leading-[1.5em]">“{wali.deskripsi}”</p>
+                  <h6 className="mt-2 md:mt-[15px] font-bold">~ {wali.nama}</h6>
                 </div>
               </div>
             ))}
           </div>
 
+          {/* key={`rev-${idx}`} */}
+
           {/* SLIDE KANAN */}
           <div className="flex animate-slide-reverse gap-5 mt-5">
-            {[...Array(6)].map((_, idx) => (
-              <div key={`rev-${idx}`} className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] p-[18px] h-[135px] w-[650px] shrink-0">
-                <div>
-                  <div className="h-[100px] w-[100px] rounded-full bg-gray-300 object-cover"></div>
+            {waliMurid
+              .slice()
+              .reverse()
+              .map((wali, idx) => (
+                <div
+                  key={`rev-${idx}`}
+                  className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] 
+                 p-4 md:p-[18px] h-auto md:h-[135px] w-full md:w-[650px] shrink-0"
+                >
+                  <div className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] flex-shrink-0">
+                    <Image src={wali.foto} width={100} height={100} alt={wali.nama} className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] rounded-full object-cover bg-gray-300" />
+                  </div>
+                  <div className="pl-4 md:pl-8 flex flex-col justify-center">
+                    <p className="text-sm md:text-[15px] leading-[1.5em]">“{wali.deskripsi}”</p>
+                    <h6 className="mt-2 md:mt-[15px] font-bold">~ {wali.nama}</h6>
+                  </div>
                 </div>
-                <div className="pl-8 flex flex-col justify-center">
-                  <p className="text-[15px] leading-[1.5em] line-clamp-3">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula risus at magna tincidunt, et convallis magna laoreet.”</p>
-                  <h6 className="mt-[15px] font-bold">~ Jane Smith</h6>
+              ))}
+
+            {/* Duplikat untuk looping mulus */}
+            {waliMurid
+              .slice()
+              .reverse()
+              .map((wali, idx) => (
+                <div
+                  key={`revdup-${idx}`}
+                  className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] 
+                 p-4 md:p-[18px] h-auto md:h-[135px] w-full md:w-[650px] shrink-0"
+                >
+                  <div className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] flex-shrink-0">
+                    <Image src={wali.foto} width={100} height={100} alt={wali.nama} className="h-[80px] w-[80px] md:h-[100px] md:w-[100px] rounded-full object-cover bg-gray-300" />
+                  </div>
+                  <div className="pl-4 md:pl-8 flex flex-col justify-center">
+                    <p className="text-sm md:text-[15px] leading-[1.5em]">“{wali.deskripsi}”</p>
+                    <h6 className="mt-2 md:mt-[15px] font-bold">~ {wali.nama}</h6>
+                  </div>
                 </div>
-              </div>
-            ))}
-            {[...Array(6)].map((_, idx) => (
-              <div key={`revdup-${idx}`} className="flex bg-white shadow-md rounded-[100px_20px_20px_100px] p-[18px] h-[135px] w-[650px] shrink-0">
-                <div>
-                  <div className="h-[100px] w-[100px] rounded-full bg-gray-300 object-cover"></div>
-                </div>
-                <div className="pl-8 flex flex-col justify-center">
-                  <p className="text-[15px] leading-[1.5em] line-clamp-3">“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula risus at magna tincidunt, et convallis magna laoreet.”</p>
-                  <h6 className="mt-[15px] font-bold">~ Jane Smith</h6>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
 
       <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" />
-      
+
       {/* Hubungi Kami */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">

@@ -69,3 +69,7 @@ body::before {
 .animate-slide-reverse {
   animation: slide-reverse 30s linear infinite;
 }
+
+.main-container {
+  padding-top: 80px;
+}
