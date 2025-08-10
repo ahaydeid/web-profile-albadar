@@ -77,8 +77,8 @@ export default function HomePage() {
               </a>
             </div>
             <div className="flex gap-4 mt-4">
-              <button className="bg-blue-600 text-white font-bold px-8 py-3 rounded-full">Kontak Kami</button>
-              <button className="bg-yellow-400 text-black font-bold px-8 py-3">Daftar Sekarang</button>
+              <button className="bg-blue-600 text-white font-bold px-6 py-3 md:px-8 md:py-3 text-sm sm:text-lg rounded-full">Kontak Kami</button>
+              <button className="bg-yellow-400 text-black font-bold px-6 py-3 md:px-8 md:py-3 text-sm sm:text-lg">Daftar Sekarang</button>
             </div>
           </div>
 
