@@ -54,10 +54,19 @@ export default function HomePage() {
           </div>
 
           {/* Right */}
-          <div className="relative">
+          <div className="relative hidden lg:block">
             <div className="absolute -z-10 w-72 h-72 bg-yellow-400 rounded-full top-0 right-0"></div>
-            <Image src="/assets/images/santri.png" alt="Kepala Sekolah" width={300} height={400} className="relative z-10" />
-            <p className="mt-4 font-bold text-[#FFD700] text-2xl border-b border-white" style={{ textShadow: "2px 1px 2px rgba(0,0,0,0.37)" }}>
+            <Image
+              src="/assets/images/santri.png"
+              alt="Kepala Sekolah"
+              width={300}
+              height={400}
+              className="relative z-10"
+            />
+            <p
+              className="mt-4 font-bold text-[#FFD700] text-2xl border-b border-white"
+              style={{ textShadow: "2px 1px 2px rgba(0,0,0,0.37)" }}
+            >
               Hj. Airin Rachmi Diani
             </p>
             <p className="text-lg text-white">Kepala SMK Al Badar</p>
