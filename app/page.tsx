@@ -1,6 +1,6 @@
 // app/page.tsx
 import Image from "next/image";
-import { FaWhatsapp, FaInstagram, FaMapMarkerAlt } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { HiOutlineBookOpen, HiOutlineStar } from "react-icons/hi";
 import { PiHeartFill } from "react-icons/pi";
