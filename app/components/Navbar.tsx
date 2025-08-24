@@ -18,15 +18,16 @@ export default function Navbar() {
       dropdown: [
         { name: "Sejarah", href: "/tentang/sejarah" },
         { name: "Visi & Misi", href: "/tentang/visimisi" },
-        { name: "Guru & Staff", href: "/tentang/guru-staff" },
+        { name: "Guru & Staff", href: "/tentang/gurustaff" },
       ],
     },
     {
       name: "Program",
       dropdown: [
-        { name: "Manajemen Perkantoran", href: "/program/manajemen-perkantoran" },
+        { name: "Manajemen Perkantoran", href: "/program/mp" },
         { name: "Teknik Kendaraan Ringan", href: "/program/tkr" },
         { name: "Teknik Sepeda Motor", href: "/program/tsm" },
+        { name: "Tata Boga (Kuliner)", href: "/program/kuliner" },
         { name: "Program Unggulan", href: "/program/unggulan" },
       ],
     },
