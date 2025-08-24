@@ -52,8 +52,13 @@ export default function HomePage() {
             </div>
 
             <div className="flex gap-4 mt-4">
-              <button className="bg-blue-600 text-white font-bold px-6 py-3 md:px-8 md:py-3 text-sm sm:text-lg rounded-full">Kontak Kami</button>
-              <button className="bg-yellow-400 text-black font-bold px-6 py-3 md:px-8 md:py-3 text-sm sm:text-lg">Daftar Sekarang</button>
+              <a href="https://wa.me/6285814888500" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white font-bold px-6 py-3 md:px-8 md:py-3 text-sm sm:text-lg rounded-full hover:bg-blue-700 transition">
+                Kontak Kami
+              </a>
+
+              <a href="/pendaftaran" className="bg-yellow-400 text-black font-bold px-6 py-3 md:px-8 md:py-3 text-sm sm:text-lg hover:bg-yellow-500 transition">
+                Daftar Sekarang
+              </a>
             </div>
           </div>
 

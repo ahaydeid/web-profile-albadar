@@ -80,10 +80,18 @@ export default function KegiatanSekolah() {
       {/* Galeri */}
       <section className="max-w-6xl mx-auto py-12 px-4">
         <h2 className="text-2xl font-bold mb-6 text-blue-700">Galeri</h2>
+
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {[1, 2, 3, 4, 5, 6].map((n) => (
-            <div key={n} className="relative w-full h-48 rounded-xl overflow-hidden shadow">
-              <Image src={`/images/kegiatan-${n}.jpg`} alt={`Kegiatan ${n}`} fill className="object-cover hover:scale-105 transition-transform" />
+          {[
+            { src: "/assets/images/images.png", alt: "Lomba Pidato" },
+            { src: "/assets/images/images.png", alt: "Upacara Bendera" },
+            { src: "/assets/images/images.png", alt: "Ekstrakurikuler Pramuka" },
+            { src: "/assets/images/images.png", alt: "Kegiatan Olahraga" },
+            { src: "/assets/images/images.png", alt: "Pengajian Kitab Kuning" },
+            { src: "/assets/images/images.png", alt: "Belajar Bersama" },
+          ].map((item, index) => (
+            <div key={index} className="relative w-full h-48 rounded-xl overflow-hidden shadow group">
+              <Image src={item.src} alt={item.alt} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
           ))}
         </div>
