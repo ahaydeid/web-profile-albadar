@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function GuruStafPage() {
   const guru = [
     { nama: "Dudi, S.Kom", jabatan: "Wakil Kepala Sekolah", img: "/assets/images/images.jpeg" },
-    { nama: "Indra Prakoso, S.Kom", jabatan: "Bidang Kurikulum", img: "/assets/images/images.jpeg" },
+    { nama: "Indra, S.Kom", jabatan: "Bidang Kurikulum", img: "/assets/images/images.jpeg" },
     { nama: "Liza, SH", jabatan: "Guru PKN", img: "/assets/images/images.jpeg" },
     { nama: "Kamaludin, S.Kom", jabatan: "Guru Informatika", img: "/assets/images/images.jpeg" },
     { nama: "Ahadi, S.Kom", jabatan: "Guru Coding", img: "/assets/images/images.jpeg" },
@@ -37,7 +37,7 @@ export default function GuruStafPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#5b00b2]/60 via-transparent opacity-0 group-hover:opacity-100 transition"></div>
               </div>
               <div className="p-4 text-center flex-grow flex flex-col justify-center">
-                <h2 className="text-2xl font-semibold text-[#5b00b2]">Suhaili, S.Pd</h2>
+                <h2 className="text-2xl font-semibold text-[#5b00b2]">Suhaeli, S.Pd</h2>
                 <p className="text-sm text-gray-600">Kepala Sekolah</p>
               </div>
             </div>
