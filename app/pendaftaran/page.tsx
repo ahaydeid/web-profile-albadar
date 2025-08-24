@@ -74,7 +74,7 @@ export default function PendaftaranPage() {
 
         {/* Tombol Daftar */}
         <div className="flex justify-center mt-10">
-          <a href="https://wa.me/6281234567890" className="bg-pink-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-pink-700 transition">
+          <a href="https://wa.me/6285814888500" className="bg-pink-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-pink-700 transition">
             Daftar Sekarang
           </a>
         </div>
