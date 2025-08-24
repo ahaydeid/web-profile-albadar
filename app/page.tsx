@@ -30,7 +30,7 @@ export default function HomePage() {
               <span className="text-purple-700">SMKS Al Badar </span>
               <span className="text-[#FFD700]">Tangerang</span>
             </h1>
-            <p className="italic text-gray-400 text-lg font-bold mt-5">&quot;Lorem Ipsum is simply dummy text&quot;</p>
+            <p className="italic text-gray-400 text-lg font-bold mt-5">&quot;Mencetak santri berilmu, berakhlak, dan bermanfaat bagi umat.&quot;</p>
             {/* <div className="flex items-center mt-15 gap-2 text-gray-700">
               <FaMapMarkerAlt className="text-red-500" />
               <span>Sukamantri, Kec. Balajara, Kabupaten Tangerang, Banten 15810</span>
