@@ -2,16 +2,17 @@ import Image from "next/image";
 
 export default function GuruStafPage() {
   const guru = [
-    { nama: "Siti Rahmawati, S.Pd", jabatan: "Wakil Kepala Sekolah", img: "/assets/images/images.jpeg" },
-    { nama: "Kamaludin, S.Kom", jabatan: "Guru Coding", img: "/assets/images/images.jpeg" },
-    { nama: "Joko Santoso, S.Kom", jabatan: "Guru Produktif", img: "/assets/images/images.jpeg" },
-    { nama: "Lina Marlina, S.Pd", jabatan: "Guru Bahasa", img: "/assets/images/images.jpeg" },
-    { nama: "Nur Aini, M.Pd", jabatan: "Guru Matematika", img: "/assets/images/images.jpeg" },
+    { nama: "Dudi, S.Kom", jabatan: "Wakil Kepala Sekolah", img: "/assets/images/images.jpeg" },
+    { nama: "Indra Prakoso, S.Kom", jabatan: "Bidang Kurikulum", img: "/assets/images/images.jpeg" },
+    { nama: "Liza, SH", jabatan: "Guru PKN", img: "/assets/images/images.jpeg" },
+    { nama: "Kamaludin, S.Kom", jabatan: "Guru Informatika", img: "/assets/images/images.jpeg" },
+    { nama: "Ahadi, S.Kom", jabatan: "Guru Coding", img: "/assets/images/images.jpeg" },
+    { nama: "Risa, S.Pd", jabatan: "Guru Bahasa Inggris", img: "/assets/images/images.jpeg" },
   ];
 
   const staf = [
-    { nama: "Rudi Hartono, S.E", jabatan: "Staf Administrasi", img: "/assets/images/images.jpeg" },
-    { nama: "Wati Susanti", jabatan: "Staf Tata Usaha", img: "/assets/images/images.jpeg" },
+    { nama: "Gusti", jabatan: "Staf Lab Komputer", img: "/assets/images/images.jpeg" },
+    { nama: "Akbar", jabatan: "Staf Tata Usaha", img: "/assets/images/images.jpeg" },
   ];
 
   return (
@@ -23,9 +24,8 @@ export default function GuruStafPage() {
             Guru & <span className="text-yellow-500">Staf</span>
           </h1>
           <p className="text-gray-700 text-sm md:text-base max-w-2xl mx-auto">Tenaga pendidik dan staf terbaik yang berkomitmen untuk mendidik, membimbing, serta melayani siswa dengan sepenuh hati.</p>
-        <hr className="border-t-[3px] mt-5 border-[#DDDDDD] w-[50%] mx-auto" />
+          <hr className="border-t-[3px] mt-5 border-[#DDDDDD] w-[50%] mx-auto" />
         </div>
-
 
         {/* Bagian Kepala Sekolah */}
         <div className="mb-20">
