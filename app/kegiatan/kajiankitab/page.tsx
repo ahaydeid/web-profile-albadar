@@ -82,7 +82,7 @@ export default function KajianKitabPage() {
       <section className="bg-emerald-600 text-white py-12 px-4 text-center">
         <h2 className="text-2xl font-bold mb-3">Ingin Bergabung?</h2>
         <p className="max-w-2xl mx-auto text-emerald-100 mb-6">Jadilah bagian dari kajian kitab kuning di Al Badar dan raih ilmu yang bermanfaat dunia akhirat.</p>
-        <a href="/ppdb" className="inline-block bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-emerald-100 transition">
+        <a href="/pendaftaran" className="inline-block bg-white text-emerald-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-emerald-100 transition">
           Daftar Sekarang
         </a>
       </section>
