@@ -16,7 +16,8 @@ export default function Navbar() {
     {
       name: "Tentang",
       dropdown: [
-        { name: "Sejarah, Visi & Misi", href: "/tentang/sejarah" },
+        { name: "Sejarah", href: "/tentang/sejarah" },
+        { name: "Visi & Misi", href: "/tentang/visimisi" },
         { name: "Guru & Staff", href: "/tentang/guru-staff" },
       ],
     },
@@ -33,7 +34,9 @@ export default function Navbar() {
       name: "Kegiatan",
       dropdown: [
         { name: "Kegiatan Sekolah", href: "/kegiatan/sekolah" },
+        { name: "Kegiatan Pondok", href: "/kegiatan/pondok" },
         { name: "Ekstrakurikuler", href: "/kegiatan/ekstrakurikuler" },
+        { name: "Kajian Kitab Kuning", href: "/kegiatan/kajiankitab" },
       ],
     },
     { name: "Fasilitas", href: "/fasilitas" },

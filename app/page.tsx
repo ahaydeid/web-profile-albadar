@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { MdEmail, MdPhone } from "react-icons/md";
-import { HiOutlineBookOpen, HiOutlineStar } from "react-icons/hi";
-import { PiHeartFill } from "react-icons/pi";
+// import { HiOutlineBookOpen, HiOutlineStar } from "react-icons/hi";
+// import { PiHeartFill } from "react-icons/pi";
 import "./globals.css";
 // import Link from "next/link";
 
@@ -53,7 +53,7 @@ export default function HomePage() {
           <div className="max-w-lg">
             <h2 className="text-3xl font-medium">Selamat datang di</h2>
             <h1 className="text-6xl font-bold" style={{ textShadow: "2px 1px 2px rgba(0,0,0,0.37)" }}>
-              <span className="text-purple-700">SMK Al Badar </span>
+              <span className="text-purple-700">SMKS Al Badar </span>
               <span className="text-[#FFD700]">Tangerang</span>
             </h1>
             <p className="italic text-gray-400 text-lg font-bold mt-5">&quot;Lorem Ipsum is simply dummy text&quot;</p>
@@ -87,27 +87,33 @@ export default function HomePage() {
             <div className="absolute -z-10 w-72 h-72 bg-yellow-400 rounded-full top-0 right-0"></div>
             <Image src="/assets/images/santri.png" alt="Kepala Sekolah" width={400} height={400} className="relative z-10" />
             <p className="mt-4 font-bold text-[#FFD700] text-2xl border-b border-white" style={{ textShadow: "2px 1px 2px rgba(0,0,0,0.37)" }}>
-              Hj. Airin Rachmi Diani
+              KH. Waskurni, S.Ag., M.Si.
             </p>
-            <p className="text-lg text-white">Kepala SMK Al Badar</p>
+            <p className="text-lg text-white">Kepala Yayasan Al Badar</p>
           </div>
         </div>
       </section>
 
       {/* Sekilas Tentang Kita */}
       <section className="bg-[#a000ff] text-white py-16 px-3 md:px-30 relative">
-        <div className="max-w-7xl mx-auto px-4 text-center md:text-left">
-          <h2 className="text-3xl font-bold text-center mb-10">Sekilas Tentang SMK AL Badar Tangerang</h2>
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <Image src="/assets/images/contoh.jpg" alt="Tentang Kita" width={280} height={280} className="rounded-lg" />
-            <div className="ml-10">
-              <p className="mb-4 text-justify">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-                type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. and more recently with desktop publishing software like Aldus PageMaker including versions of
-                Lorem
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 leading-tight">
+            Sekilas Tentang <span className="text-yellow-300">SMK AL Badar Tangerang</span>
+          </h2>
+
+          <div className="flex flex-col md:flex-row items-center gap-10">
+            {/* Gambar */}
+            <Image src="/assets/images/contoh.jpg" alt="Tentang Kita" width={320} height={320} className="rounded-2xl shadow-xl object-cover" />
+
+            {/* Konten */}
+            <div className="md:ml-8 max-w-2xl">
+              <p className="mb-6 text-lg leading-relaxed text-justify opacity-90">
+                Berawal dari sebuah keprihatinan, muncul sebuah pemikiran dan terbentuklah sebuah tekad. Keprihatinan melihat materialisme dan konsumerisme yang dibuktikan hampir sebagian besar tanah dan sawah habis dijual tanpa memikirkan
+                anak cucu ke depan. Mau tinggal dimana mereka? Mau diwariskan apa anak cucu kita nanti? Nampaknya nyaris tidak ada pikiran saat itu, yang ada hanya bagaimana sawah dan tanah cepat jadi uang. Akhirnya muncul sebuah pemikiran,
+                tidak ada solusi lain kecuali mereka harus dibekali ilmu yang ...
               </p>
-              <button className="bg-yellow-400 text-black px-4 py-2 rounded-full">Selengkapnya</button>
+
+              <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full shadow-md transition-transform transform hover:scale-105">Selengkapnya</button>
             </div>
           </div>
         </div>
@@ -115,18 +121,19 @@ export default function HomePage() {
 
       {/* Jurusan */}
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-center text-3xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400 after:mx-auto">Jurusan</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <h2 className="text-center text-3xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-16 after:bg-yellow-400 after:mx-auto">Jurusan</h2>
+          <div className="flex flex-wrap justify-center gap-8">
             {[
-              { title: "Manajemen Perkantoran", color: "bg-gray-100" },
-              { title: "Teknik Kendaraan Ringan", color: "bg-yellow-100" },
-              { title: "Teknik Sepeda Motor", color: "bg-blue-100" },
+              { title: "Manajemen Perkantoran", color: "bg-white" },
+              { title: "Teknik Kendaraan Ringan", color: "bg-white" },
+              { title: "Teknik Sepeda Motor", color: "bg-white" },
+              { title: "Kuliner (Tata Boga)", color: "bg-white" },
             ].map((item, idx) => (
-              <div key={idx} className={`${item.color} rounded-lg p-6 text-center shadow`}>
-                <div className="bg-gray-300 h-40 mb-4 rounded"></div>
-                <h3 className="font-bold">{item.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">Lorem ipsum is simply dummy text...</p>
+              <div key={idx} className={`${item.color} rounded-2xl p-6 text-center shadow hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 w-72 border border-gray-200`}>
+                <div className="bg-gradient-to-br from-yellow-200 to-yellow-400 h-40 mb-4 rounded-lg flex items-center justify-center text-gray-700 font-semibold">Gambar</div>
+                <h3 className="font-bold text-lg text-gray-800">{item.title}</h3>
+                <p className="text-sm text-gray-500 mt-2">Program unggulan dengan kurikulum modern berbasis industri.</p>
               </div>
             ))}
           </div>
@@ -134,25 +141,42 @@ export default function HomePage() {
       </section>
 
       {/* Program Unggulan */}
-      <section className="bg-purple-700 px-3 md:px-30 text-white py-16">
-        <h2 className="text-center text-3xl font-bold mb-12 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400 after:mx-auto">Program Unggulan</h2>
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex-1">
-            <p className="text-justify">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-              type specimen book. It has survived not only five centuries
+      <section className="bg-gradient-to-br from-purple-700 via-purple-800 to-purple-900 text-white py-20 px-6 md:px-20">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4 relative inline-block">
+            Program Unggulan
+            <span className="block h-[4px] w-16 bg-yellow-400 mx-auto mt-3 rounded-full"></span>
+          </h2>
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto">Mengintegrasikan keahlian vokasional, pembinaan karakter Islami, dan peluang kerja yang luas untuk mencetak lulusan unggul.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Deskripsi */}
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-xl text-left hover:shadow-yellow-400/40 transition">
+            <p className="text-lg leading-relaxed">
+              <strong>SMK Al Badar</strong> dirancang untuk memadukan keahlian vokasional dengan pembinaan karakter Islami. Siswa dibekali keterampilan di bidang
+              <span className="text-yellow-400 font-semibold"> Manajemen Perkantoran, Kuliner (Tata Boga), Teknik Kendaraan Ringan,</span> dan
+              <span className="text-yellow-400 font-semibold"> Teknik Bisnis Sepeda Motor</span>, serta mendapatkan penguatan spiritual melalui
+              <span className="text-yellow-400 font-semibold"> kajian kitab kuning, tahfiz Qur’an,</span> dan pembentukan akhlak mulia.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed">
+              Dengan pendidikan <span className="text-yellow-400 font-bold">gratis hingga lulus</span> dan dukungan fasilitas modern, siswa siap menghadapi dunia kerja. Kolaborasi dengan perusahaan nasional membuka jalan karier melalui
+              <span className="text-yellow-400 font-semibold"> Job Fair</span> dan
+              <span className="text-yellow-400 font-semibold"> LSP (Lembaga Sertifikasi Profesi)</span>.
             </p>
           </div>
-          <div className="flex-1 grid grid-cols-2 gap-4">
+
+          {/* Icon Box */}
+          <div className="grid grid-cols-2 gap-6">
             {[
-              { icon: <HiOutlineBookOpen />, label: "Tahfidz" },
-              { icon: "📚", label: "Bahasa Arab" },
-              { icon: <PiHeartFill />, label: "Akhlak" },
-              { icon: <HiOutlineStar />, label: "Prestasi" },
+              { icon: "🏢", label: "Hiring Partner" },
+              { icon: "📖", label: "Kajian Kitab Kuning" },
+              { icon: "❤️", label: "Pembinaan Akhlak" },
+              { icon: "⭐", label: "Prestasi Unggul" },
             ].map((prog, idx) => (
-              <div key={idx} className="bg-white text-black rounded-full px-4 py-2 flex items-center gap-2 font-bold">
-                {prog.icon}
-                {prog.label}
+              <div key={idx} className="bg-white text-purple-800 rounded-2xl shadow-lg hover:shadow-yellow-400/40 transition transform hover:-translate-y-2 p-6 flex flex-col items-center justify-center text-center">
+                <div className="text-4xl mb-3">{prog.icon}</div>
+                <p className="font-bold text-lg">{prog.label}</p>
               </div>
             ))}
           </div>
@@ -160,19 +184,55 @@ export default function HomePage() {
       </section>
 
       {/* Aktivitas */}
-      <section className="py-16 px-3 md:px-16">
+      <section className="py-16 px-4 md:px-10 bg-gray-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-center text-3xl font-bold mb-12 underline decoration-yellow-400">Aktivitas</h2>
+          {/* Judul */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              Aktivitas <span className="text-yellow-500">Kami</span>
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">Berbagai kegiatan menarik dan inspiratif yang mendukung pengembangan karakter, kreativitas, dan kompetensi peserta didik.</p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {/* Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {/* Gambar besar */}
-            <div className="bg-gray-300 rounded-lg h-80 md:col-span-2 md:row-span-2"></div>
+            <div className="relative bg-gray-200 rounded-2xl overflow-hidden md:col-span-2 md:row-span-2 group">
+              <Image src="/assets/images/aktivitas/act1.jpeg" alt="Kegiatan utama" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-white text-lg font-semibold">Kegiatan Utama</span>
+              </div>
+            </div>
 
-            {/* Gambar kecil */}
-            <div className="bg-gray-200 rounded-lg h-40"></div>
-            <div className="bg-gray-200 rounded-lg h-40"></div>
-            <div className="bg-gray-200 rounded-lg h-40"></div>
-            <div className="bg-gray-200 rounded-lg h-40"></div>
+            {/* Kolom kanan atas */}
+            <div className="relative bg-gray-200 rounded-2xl overflow-hidden group h-48">
+              <Image src="/assets/images/aktivitas/act2.jpeg" alt="Ekstrakurikuler" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-white text-sm md:text-base font-medium">Ekstrakurikuler</span>
+              </div>
+            </div>
+
+            <div className="relative bg-gray-200 rounded-2xl overflow-hidden group h-48">
+              <Image src="/assets/images/aktivitas/act2.jpeg" alt="Praktek Lapangan" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-white text-sm md:text-base font-medium">Praktek Lapangan</span>
+              </div>
+            </div>
+
+            {/* Kolom kanan bawah */}
+            <div className="relative bg-gray-200 rounded-2xl overflow-hidden group h-48">
+              <Image src="/assets/images/aktivitas/act2.jpeg" alt="Kegiatan Sosial" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-white text-sm md:text-base font-medium">Kegiatan Sosial</span>
+              </div>
+            </div>
+
+            <div className="relative bg-gray-200 rounded-2xl overflow-hidden group h-48">
+              <Image src="/assets/images/aktivitas/act2.jpeg" alt="Prestasi Siswa" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-white text-sm md:text-base font-medium">Prestasi Siswa</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -183,6 +243,7 @@ export default function HomePage() {
       <section className="py-16 px-3 md:px-10 mt-20">
         <div className="text-center">
           <h1 className="text-center text-3xl font-bold mb-12 underline decoration-yellow-400">Apa Kata Wali Murid?</h1>
+          <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">Testimoni nyata dari para wali murid tentang pengalaman dan kepuasan mereka terhadap layanan dan pendidikan yang diberikan.</p>
         </div>
 
         {/* Wrapper Slider */}
@@ -261,38 +322,101 @@ export default function HomePage() {
 
       <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" />
 
-      {/* Hubungi Kami */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
-          <div>
-            <div className="bg-gray-300 w-full h-48 rounded-lg mb-4"></div>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">Buka Maps</button>
+      {/* Kerjasama Perusahaan */}
+      <section className="py-20 px-4 md:px-10 mt-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto">
+          {/* Heading */}
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Kerjasama <span className="text-yellow-500">Perusahaan</span>
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base max-w-2xl mx-auto">Kami menjalin kerjasama strategis dengan berbagai perusahaan ternama untuk mendukung pengembangan kompetensi dan peluang karir peserta didik.</p>
           </div>
 
+          {/* SLIDER */}
+          <div className="overflow-hidden relative w-full">
+            {[
+              [
+                { nama: "PT. Yamaha Motor Indonesia", logo: "/assets/images/logoperusahaan/yamaha.jpeg" },
+                { nama: "PT. Citra Bina Maju Jaya", logo: "/assets/images/logoperusahaan/citrabina.jpg" },
+                { nama: "PT. Rusli Jaya Mandiri", logo: "/assets/images/logoperusahaan/ruslijaya.png" },
+                { nama: "PT. Bank Central Asia Tbk", logo: "/assets/images/logoperusahaan/bca.png" },
+                { nama: "PT. Telekomunikasi Indonesia", logo: "/assets/images/logoperusahaan/telkom.webp" },
+                { nama: "PT. Simetri Putra Perkasa", logo: "/assets/images/logoperusahaan/simetri.png" },
+                { nama: "PT. Wings Surya", logo: "/assets/images/logoperusahaan/wings.png" },
+                { nama: "PT. Herbatama Indo Perkasa", logo: "/assets/images/logoperusahaan/herba.png" },
+                { nama: "Hotel Olive Tangerang", logo: null },
+              ],
+            ].map((row, rowIndex) => (
+              <div key={rowIndex} className={`flex gap-16 py-3 items-center ${rowIndex === 0 ? "animate-slide" : "animate-slide-reverse"}`}>
+                {row.concat(row).map((pt, index) => (
+                  <div key={`${pt.nama}-${index}`} className="flex items-center gap-4 shrink-0 bg-white rounded-full px-6 py-3 shadow hover:shadow-lg hover:scale-105 transition duration-300">
+                    {pt.logo ? (
+                      <Image src={pt.logo} alt={pt.nama} width={80} height={80} className="object-contain w-16 md:w-20 h-16 md:h-20" priority />
+                    ) : (
+                      <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-gray-200 text-gray-500 text-xs rounded-full">NO LOGO</div>
+                    )}
+                    <span className="text-base md:text-lg font-semibold text-gray-700 whitespace-nowrap">{pt.nama}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* <hr className="border-t-[3px] border-[#DDDDDD] w-[90%] mx-auto" /> */}
+
+      {/* Hubungi Kami */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+          {/* MAP */}
+          <div className="flex flex-col">
+            <div className="rounded-2xl overflow-hidden shadow-lg h-64 md:h-full">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.435278684083!2d106.42082587459917!3d-6.206173393781628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e4203e9f8c11e7b%3A0x4ac748bdb0718b70!2sSMK%20AL-BADAR!5e0!3m2!1sid!2sid!4v1756051543968!5m2!1sid!2sid"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+            <a href="https://maps.app.goo.gl/thVvcoRuaAiEzDTV8" target="_blank" rel="noopener noreferrer" className="mt-6 inline-block text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-xl shadow transition">
+              Buka di Google Maps
+            </a>
+          </div>
+
+          {/* KONTAK */}
           <div>
-            <h3 className="text-xl font-bold mb-4 relative after:content-[''] after:block after:h-[3px] after:w-12 after:bg-yellow-400">Hubungi Kami</h3>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2">
-                <MdPhone /> 081234567891
+            <h3 className="text-2xl font-bold mb-8">Hubungi Kami</h3>
+            <ul className="space-y-5 text-gray-700 text-base">
+              <li className="flex items-center gap-3">
+                <MdPhone className="text-blue-600 text-lg" /> 0812-3456-7891
               </li>
-              <li className="flex items-center gap-2">
-                <MdEmail /> admin@albadar.ac.id
+              <li className="flex items-center gap-3">
+                <MdEmail className="text-blue-600 text-lg" /> admin@albadar.ac.id
               </li>
-              <li className="flex items-center gap-2">
-                <FaWhatsapp /> 081234567891
+              <li className="flex items-center gap-3">
+                <FaWhatsapp className="text-green-500 text-lg" /> 0812-3456-7891
               </li>
-              <li className="flex items-center gap-2">
-                <FaInstagram /> @albadartangerang
+              <li className="flex items-center gap-3">
+                <FaInstagram className="text-pink-500 text-lg" /> @albadartangerang
               </li>
-              <li>SMK Al Badar Tangerang, Sukamantri, Kec. Balajara, Kabupaten Tangerang, Banten 15810</li>
+              <li className="flex items-start gap-3">
+                <span className="text-blue-600">📍</span>
+                <p className="leading-relaxed">SMK Al Badar Tangerang, Sukamantri, Kec. Balajara, Kabupaten Tangerang, Banten 15810</p>
+              </li>
             </ul>
           </div>
 
-          <form className="bg-white shadow rounded-lg p-4 space-y-4">
-            <input type="text" placeholder="Nama" className="w-full border rounded px-3 py-2" />
-            <input type="text" placeholder="No. HP" className="w-full border rounded px-3 py-2" />
-            <textarea placeholder="Tulis pesan di sini..." rows={4} className="w-full border rounded px-3 py-2" />
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">Kirim</button>
+          {/* FORM */}
+          <form className="bg-white rounded-2xl shadow-lg p-8 space-y-5">
+            <input type="text" placeholder="Nama" className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none" />
+            <input type="text" placeholder="No. HP" className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none" />
+            <textarea placeholder="Tulis pesan di sini..." rows={4} className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 outline-none" />
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg shadow transition">Kirim Pesan</button>
           </form>
         </div>
       </section>
