@@ -18,6 +18,7 @@ export default function Navbar() {
       dropdown: [
         { name: "Sejarah", href: "/tentang/sejarah" },
         { name: "Visi & Misi", href: "/tentang/visimisi" },
+        { name: "Mars Al-Badar", href: "/tentang/mars" },
         { name: "Guru & Staff", href: "/tentang/gurustaff" },
       ],
     },
