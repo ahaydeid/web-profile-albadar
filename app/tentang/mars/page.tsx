@@ -22,7 +22,7 @@ export default function MarsPage() {
     <main className="bg-gradient-to-br from-purple-800 via-purple-900 to-purple-950 min-h-screen text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-6 text-center overflow-hidden">
-        <Image src="/images/mars-bg.jpg" alt="Mars Al Badar" fill className="object-cover opacity-20" />
+        <Image src="/assets/images/images.png" alt="Mars Al Badar" fill className="object-cover opacity-20" />
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Mars Al Badar</h1>
           <p className="text-lg text-gray-200">Lagu kebanggaan yang membangkitkan semangat dan persatuan civitas Al Badar.</p>
