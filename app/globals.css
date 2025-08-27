@@ -70,6 +70,9 @@ body::before {
   animation: slide-reverse 30s linear infinite;
 }
 
+
+
+
 .main-container {
   padding-top: 80px;
 }

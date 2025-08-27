@@ -20,6 +20,7 @@ export default function Navbar() {
         { name: "Visi & Misi", href: "/tentang/visimisi" },
         { name: "Mars Al-Badar", href: "/tentang/mars" },
         { name: "Guru & Staff", href: "/tentang/gurustaff" },
+        { name: "Prestasi", href: "/tentang/prestasi" },
       ],
     },
     {
@@ -61,7 +62,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-2">
             <Image src="/assets/images/albadar-logo.png" alt="Logo" width={40} height={40} className="h-10 w-10" />
             <span className="text-purple-700 font-bold text-sm sm:text-base leading-tight">
-              SMK Al Badar <br />
+              SMKS Al Badar <br />
               Tangerang
             </span>
           </Link>

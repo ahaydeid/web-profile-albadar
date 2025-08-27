@@ -11,8 +11,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "SMK Al-Badar Tangerang",
-  description: "Website official SMK Al Badar Tangerang - Banten",
+  title: "SMKS Al-Badar Tangerang",
+  description: "Website official SMKS Al Badar Tangerang - Banten",
   icons: {
     icon: "/assets/icons/albadar-logo.ico",
   },
