@@ -20,6 +20,7 @@ export default function Navbar() {
         { name: "Visi & Misi", href: "/tentang/visimisi" },
         { name: "Mars Al-Badar", href: "/tentang/mars" },
         { name: "Guru & Staff", href: "/tentang/gurustaff" },
+        { name: "Struktur Organisasi", href: "/tentang/strukturorg" },
         { name: "Prestasi", href: "/tentang/prestasi" },
       ],
     },

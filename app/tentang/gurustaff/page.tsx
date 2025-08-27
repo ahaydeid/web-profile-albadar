@@ -1,28 +1,39 @@
+// app/tentang/gurustaff/page.tsx
 import Image from "next/image";
 
-export default function GuruStafPage() {
-  const guru = [
-    { nama: "Dudi Ruchyat, S.Kom", jabatan: "Wakil Kepala Sekolah", img: "/assets/images/images.jpeg" },
-    { nama: "Indrayani, S.Kom", jabatan: "Bidang Kurikulum", img: "/assets/images/images.jpeg" },
-    { nama: "Liza Listiawan, SH", jabatan: "Guru PKN", img: "/assets/images/images.jpeg" },
-    { nama: "Kamaludin, S.Kom", jabatan: "Guru Informatika", img: "/assets/images/images.jpeg" },
-    { nama: "Fahmil Ilmi, S.Pd", jabatan: "Guru Manajemen", img: "/assets/images/images.jpeg" },
-    { nama: "Ahadi, S.Kom", jabatan: "Guru Coding", img: "/assets/images/images.jpeg" },
-    { nama: "Gusti Ario GM, S.Kom", jabatan: "Guru Informatika", img: "/assets/images/images.jpeg" },
-    { nama: "Risa, S.Pd", jabatan: "Guru Bahasa Inggris", img: "/assets/images/images.jpeg" },
-  ];
-
-  const staf = [
-    { nama: "Ahmad Rifai, S.Pd", jabatan: "Kepala Tata Usaha", img: "/assets/images/images.jpeg" },
-    { nama: "Ahmad Idham", jabatan: "Staff Administrasi", img: "/assets/images/images.jpeg" },
-    { nama: "Adam Lesmana", jabatan: "Administrasi Kesiswaan", img: "/assets/images/images.jpeg" },
-    { nama: "Hambali, S.Pdi", jabatan: "Staf Tata Usaha", img: "/assets/images/images.jpeg" },
-    { nama: "Samsul", jabatan: "Keamanan", img: "/assets/images/images.jpeg" },
-    { nama: "Suryana", jabatan: "Tata Kelola Kebersihan", img: "/assets/images/images.jpeg" },
+export default function GuruStaffPage() {
+  // Data guru/staff
+  const dataGuruStaff = [
+    { foto: "/assets/images/man.png", nama: "Hambali, S.Pd.I", gender: "Laki-laki", jabatan: "Wakasek Bidang Kurikulum SMP", jurusan: "Pendidikan Agama Islam", universitas: "STITMAA Jakarta" },
+    { foto: "/assets/images/man.png", nama: "Eva Ocvayanti, S.Pd", gender: "Perempuan", jabatan: "Wakasek Kesiswaan SMK", jurusan: "Pendidikan Bahasa dan Sastra Indonesia", universitas: "STKIP Siliwangi Bandung" },
+    { foto: "/assets/images/man.png", nama: "Nailan Indah Bestari, SE", gender: "Perempuan", jabatan: "Guru", jurusan: "Akuntansi", universitas: "STIE Tridharma" },
+    { foto: "/assets/images/man.png", nama: "Rian Putra Perdana", gender: "Laki-laki", jabatan: "Guru", jurusan: "Otomotif", universitas: "SMK PGRI 1 Kertosono" },
+    { foto: "/assets/images/man.png", nama: "Maya Kusmiati", gender: "Perempuan", jabatan: "Guru/BP/BK SMP", jurusan: "Pendidikan Agama Islam", universitas: "IAIN SMH Banten" },
+    { foto: "/assets/images/man.png", nama: "Samsul Muarip", gender: "Laki-laki", jabatan: "Satpam", jurusan: "-", universitas: "SD Dangdeur 1" },
+    { foto: "/assets/images/man.png", nama: "Indrayani Hidayat S.Kom", gender: "Laki-laki", jabatan: "Wakasek Kurikulum SMK", jurusan: "Sistem Informasi", universitas: "STMIK Insan Pembangunan" },
+    { foto: "/assets/images/man.png", nama: "Rina Haafizoh. PS, S.Pd", gender: "Perempuan", jabatan: "Guru", jurusan: "Tadris Bahasa Inggris", universitas: "UIN Sultan Maulana Hasanudin Banten" },
+    { foto: "/assets/images/man.png", nama: "Muhamad Bagus Rizki Fajar", gender: "Laki-laki", jabatan: "Guru", jurusan: "Hukum Keluarga Islam", universitas: "Universitas Syekh Nawawi Banten" },
+    { foto: "/assets/images/man.png", nama: "Ayati, S. Pd", gender: "Perempuan", jabatan: "Guru", jurusan: "Pendidikan Ekonomi", universitas: "STKIP Panca Sakti Bekasi" },
+    { foto: "/assets/images/man.png", nama: "Maman Fathurahman, S. Pd", gender: "Laki-laki", jabatan: "Guru", jurusan: "Psikologi Pendidikan", universitas: "STAI Publisistik Thawalib Jakarta" },
+    { foto: "/assets/images/man.png", nama: "Drs. Muhamad Hanafi", gender: "Laki-laki", jabatan: "Kep.Program Otomotif", jurusan: "Pendidikan Teknik Mesin", universitas: "UNS (Universitas Sebelas Maret)" },
+    { foto: "/assets/images/man.png", nama: "Muhamad Rizki Pawuzi S.Pd", gender: "Laki-laki", jabatan: "Guru", jurusan: "Pendidikan Pancasila dan Kewarganegaraan", universitas: "Universitas Pamulang" },
+    { foto: "/assets/images/man.png", nama: "Syahroni", gender: "Laki-laki", jabatan: "Ka.Kejuruan Otomotif TKR dan TBSM", jurusan: "Otomtif", universitas: "STAI Darul Qalam" },
+    { foto: "/assets/images/man.png", nama: "Nurhayati, SE", gender: "Perempuan", jabatan: "Kaprog. MPLB", jurusan: "Ekonomi/Manajemen", universitas: "Untirta Banten" },
+    { foto: "/assets/images/man.png", nama: "Ayunah, S.Pd", gender: "Perempuan", jabatan: "Guru", jurusan: "-", universitas: "-" },
+    { foto: "/assets/images/man.png", nama: "Ahmad Idham Firdaus", gender: "Laki-laki", jabatan: "Bendahara SMK", jurusan: "Managemen Perkantoran", universitas: "SMK Albadar" },
+    { foto: "/assets/images/man.png", nama: "Moh. Sarif Hidayatullah", gender: "Laki-laki", jabatan: "Guru", jurusan: "Teknik Informatika", universitas: "UNIS Tangerang" },
+    { foto: "/assets/images/man.png", nama: "Dudy Ruchyat, S.Kom", gender: "Laki-laki", jabatan: "Guru", jurusan: "-", universitas: "-" },
+    { foto: "/assets/images/man.png", nama: "Mohamad Abdul Rohim S.Pd", gender: "Laki-laki", jabatan: "Guru", jurusan: "PJOK", universitas: "STKIP Pelita Pratama Serang" },
+    { foto: "/assets/images/man.png", nama: "Gusti Ario Galang Marhaendra", gender: "Laki-laki", jabatan: "Guru", jurusan: "Ilmu hukum", universitas: "UNPAM" },
+    { foto: "/assets/images/man.png", nama: "Alvian Prihatno,S.Pd", gender: "Laki-laki", jabatan: "Guru", jurusan: "Matematika", universitas: "-" },
+    { foto: "/assets/images/man.png", nama: "Aniza Sari, .S.Si", gender: "Perempuan", jabatan: "Guru", jurusan: "Matematika dan Ilmu Pengetahuan Alam", universitas: "Universitas Negri Padang" },
+    { foto: "/assets/images/man.png", nama: "Kamaludin,S.Kom", gender: "Laki-laki", jabatan: "Guru", jurusan: "Sarjana Komputer", universitas: "STT Telematika" },
+    { foto: "/assets/images/man.png", nama: "Rahmadan Akbar", gender: "Laki-laki", jabatan: "Guru", jurusan: "D3 Manajemen Informatika", universitas: "BSI Bina Sarana Informatika" },
+    { foto: "/assets/images/man.png", nama: "Anggita", gender: "Laki-laki", jabatan: "Guru", jurusan: "-", universitas: "-" },
   ];
 
   return (
-    <section className="min-h-screen bg-[#faf9ff] py-16 px-4 md:px-10">
+    <main className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Judul Halaman */}
         <div className="text-center mb-14">
@@ -32,67 +43,39 @@ export default function GuruStafPage() {
           <p className="text-gray-700 text-sm md:text-base max-w-2xl mx-auto">Tenaga pendidik dan staf terbaik yang berkomitmen untuk mendidik, membimbing, serta melayani siswa dengan sepenuh hati.</p>
           <hr className="border-t-[3px] mt-5 border-[#DDDDDD] w-[50%] mx-auto" />
         </div>
-
-        {/* Bagian Kepala Sekolah */}
-        <div className="mb-20">
-          <h2 className="text-2xl md:text-4xl font-bold text-yellow-500 mb-8 text-center">Kepala Sekolah</h2>
-          <div className="flex justify-center">
-            <div className="bg-white w-72 h-[380px] flex flex-col rounded-2xl shadow-lg overflow-hidden group border border-[#5b00b2]/20 hover:shadow-xl transition">
-              <div className="relative w-full h-56 overflow-hidden">
-                <Image src="/assets/images/images.jpeg" alt="Nama Kepala Sekolah" fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#5b00b2]/60 via-transparent opacity-0 group-hover:opacity-100 transition"></div>
-              </div>
-              <div className="p-4 text-center flex-grow flex flex-col justify-center">
-                <h2 className="text-2xl font-semibold text-[#5b00b2]">Suherli, S.Pdi</h2>
-                <p className="text-sm text-gray-600">Kepala Sekolah</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bagian Guru */}
-        <div className="mb-20">
-          <h2 className="text-2xl md:text-4xl font-bold text-[#5b00b2] mb-8 text-center">Guru</h2>
-          <div className="flex flex-wrap justify-center gap-8">
-            {guru.map((person, i) => (
-              <div key={i} className="bg-white w-64 h-[350px] flex flex-col rounded-2xl shadow-lg overflow-hidden group border border-[#5b00b2]/20 hover:shadow-xl transition">
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image src={person.img} alt={person.nama} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#5b00b2]/60 via-transparent opacity-0 group-hover:opacity-100 transition"></div>
-                </div>
-                <div className="p-4 text-center flex-grow flex flex-col justify-center">
-                  <h3 className="text-lg font-semibold text-[#5b00b2]">{person.nama}</h3>
-                  <p className="text-sm text-gray-600">{person.jabatan}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bagian Staf */}
-        <div>
-          <h2 className="text-2xl md:text-4xl font-bold text-yellow-500 mb-8 text-center">Staf</h2>
-          <div className="flex flex-wrap justify-center gap-8">
-            {staf.map((person, i) => (
-              <div key={i} className="bg-white w-64 h-[350px] flex flex-col rounded-2xl shadow-lg overflow-hidden group border border-[#5b00b2]/20 hover:shadow-xl transition">
-                <div className="relative w-full h-48 overflow-hidden">
-                  <Image src={person.img} alt={person.nama} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#5b00b2]/60 via-transparent opacity-0 group-hover:opacity-100 transition"></div>
-                </div>
-                <div className="p-4 text-center flex-grow flex flex-col justify-center">
-                  <h3 className="text-lg font-semibold text-[#5b00b2]">{person.nama}</h3>
-                  <p className="text-sm text-gray-600">{person.jabatan}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Footer / Catatan */}
-        <div className="text-center mt-20">
-          <p className="text-gray-700 max-w-2xl mx-auto">Mereka adalah bagian penting dari perjalanan SMK Al-Badar dalam mencetak generasi yang berkarakter, cerdas, dan berdaya saing.</p>
+        <div className="overflow-x-auto shadow-lg rounded-xl bg-white">
+          <table className="w-full text-sm text-gray-700">
+            <thead className="bg-gradient-to-r from-purple-700 to-indigo-500 text-white">
+              <tr>
+                <th className="py-4 px-6 text-left">No</th>
+                <th className="py-4 px-6 text-left">Foto</th>
+                <th className="py-4 px-6 text-left">Nama Lengkap</th>
+                <th className="py-4 px-6 text-left">Jenis Kelamin</th>
+                <th className="py-4 px-6 text-left">Posisi</th>
+                <th className="py-4 px-6 text-left">Jurusan</th>
+                <th className="py-4 px-6 text-left">Universitas</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataGuruStaff.map((item, index) => (
+                <tr key={index} className={`hover:bg-blue-50 transition ${index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}>
+                  <td className="py-4 px-6">{index + 1}</td>
+                  <td className="py-4 px-6">
+                    <div className="w-14 h-14 relative rounded-full overflow-hidden shadow-md">
+                      <Image src={item.foto} alt={item.nama} fill className="object-cover" />
+                    </div>
+                  </td>
+                  <td className="py-4 px-6 font-medium">{item.nama}</td>
+                  <td className="py-4 px-6">{item.gender}</td>
+                  <td className="py-4 px-6">{item.jabatan}</td>
+                  <td className="py-4 px-6">{item.jurusan}</td>
+                  <td className="py-4 px-6">{item.universitas}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </section>
+    </main>
   );
 }
