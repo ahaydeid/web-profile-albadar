@@ -30,6 +30,7 @@ export default function GuruStaffPage() {
     { foto: "/assets/images/man.png", nama: "Kamaludin,S.Kom", gender: "Laki-laki", jabatan: "Guru", jurusan: "Sarjana Komputer", universitas: "STT Telematika" },
     { foto: "/assets/images/man.png", nama: "Rahmadan Akbar", gender: "Laki-laki", jabatan: "Guru", jurusan: "D3 Manajemen Informatika", universitas: "BSI Bina Sarana Informatika" },
     { foto: "/assets/images/man.png", nama: "Anggita", gender: "Laki-laki", jabatan: "Guru", jurusan: "-", universitas: "-" },
+    { foto: "/assets/images/man.png", nama: "Ahadi, S.Kom", gender: "Laki-laki", jabatan: "Guru", jurusan: "Teknologi Informasi", universitas: "Universitas Insan Pembangunan Indonesia" },
     { foto: "/assets/images/man.png", nama: "Abdul Kholik", gender: "Laki-laki", jabatan: "Guru", jurusan: "Pendidikan", universitas: "Universitas Salahuddin Al Ayubi Jakarta" },
   ];
 
