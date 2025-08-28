@@ -53,7 +53,7 @@ export default function GuruStaffPage() {
                 <th className="py-4 px-6 text-left">Jenis Kelamin</th>
                 <th className="py-4 px-6 text-left">Posisi</th>
                 <th className="py-4 px-6 text-left">Jurusan</th>
-                <th className="py-4 px-6 text-left">Universitas</th>
+                <th className="py-4 px-6 text-left">Almamater</th>
               </tr>
             </thead>
             <tbody>
