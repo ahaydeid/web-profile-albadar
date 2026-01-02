@@ -2,25 +2,26 @@
 
 import Image from "next/image";
 
-export default function KerjasamaSection() {
-  const perusahaan = [
-    { nama: "PT. Yamaha Indonesia Motor Manufacturing", logo: "/assets/images/logoperusahaan/yamaha.png" },
-    { nama: "PT. Citra Bina Maju Jaya", logo: "/assets/images/logoperusahaan/citrabina.png" },
-    { nama: "PT. Rusli Jaya Mandiri", logo: "/assets/images/logoperusahaan/ruslijaya.png" },
-    { nama: "PT. Bank Central Asia Tbk", logo: "/assets/images/logoperusahaan/bca.png" },
-    { nama: "PT. Telekomunikasi Indonesia", logo: "/assets/images/logoperusahaan/telkom.png" },
-    { nama: "PT. Sinar Metrindo Perkasa", logo: "/assets/images/logoperusahaan/simetri.png" },
-    { nama: "PT. Wings Surya", logo: "/assets/images/logoperusahaan/wings.png" },
-    { nama: "Hotel Olive Tangerang", logo: null },
-    { nama: "PT. Aerotrans Services Indonesia", logo: "/assets/images/logoperusahaan/aerotrans.png" },
-    { nama: "PT. Toyota Manufacturing", logo: "/assets/images/logoperusahaan/toyota.png" },
-    { nama: "PT. Dein Indonesia", logo: "/assets/images/logoperusahaan/dein.png" },
-    { nama: "CV. Guna Sarana", logo: "/assets/images/images.png" },
-    { nama: "PT. Mayora Indah Tbk.", logo: "/assets/images/logoperusahaan/mayora.png" },
-    { nama: "PT. Plastic Injection", logo: "/assets/images/images.png" },
-  ];
+const perusahaan = [
+  { nama: "PT. Yamaha Indonesia Motor Manufacturing", logo: "/assets/images/logoperusahaan/yamaha.png" },
+  { nama: "PT. Citra Bina Maju Jaya", logo: "/assets/images/logoperusahaan/citrabina.png" },
+  { nama: "PT. Rusli Jaya Mandiri", logo: "/assets/images/logoperusahaan/ruslijaya.png" },
+  { nama: "PT. Bank Central Asia Tbk", logo: "/assets/images/logoperusahaan/bca.png" },
+  { nama: "PT. Telekomunikasi Indonesia", logo: "/assets/images/logoperusahaan/telkom.png" },
+  { nama: "PT. Sinar Metrindo Perkasa", logo: "/assets/images/logoperusahaan/simetri.png" },
+  { nama: "PT. Wings Surya", logo: "/assets/images/logoperusahaan/wings.png" },
+  { nama: "Hotel Olive Tangerang", logo: null },
+  { nama: "PT. Aerotrans Services Indonesia", logo: "/assets/images/logoperusahaan/aerotrans.png" },
+  { nama: "PT. Toyota Manufacturing", logo: "/assets/images/logoperusahaan/toyota.png" },
+  { nama: "PT. Dein Indonesia", logo: "/assets/images/logoperusahaan/dein.png" },
+  { nama: "CV. Guna Sarana", logo: "/assets/images/images.png" },
+  { nama: "PT. Mayora Indah Tbk.", logo: "/assets/images/logoperusahaan/mayora.png" },
+  { nama: "PT. Plastic Injection", logo: "/assets/images/images.png" },
+];
 
-  const reversedPerusahaan = [...perusahaan].reverse();
+const reversedPerusahaan = [...perusahaan].reverse();
+
+export default function KerjasamaSection() {
 
   return (
     <section className="py-20 px-4 md:px-10 mt-20 bg-gradient-to-b from-white to-gray-50">

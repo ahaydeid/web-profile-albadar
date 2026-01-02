@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Fredoka } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 
-const poppins = Poppins({
+const fredoka = Fredoka({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-fredoka",
 });
 
 export const metadata: Metadata = {
@@ -24,13 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased`}>
-        <Navbar />
-        <main className="flex-grow">
-          <div className="main-container">{children}</div>
-        </main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body 
+        className={`${fredoka.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
+        {children}
       </body>
     </html>
   );

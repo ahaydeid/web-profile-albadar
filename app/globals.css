@@ -1,23 +1,8 @@
 @import "tailwindcss";
 
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: var(--font-fredoka), ui-sans-serif, system-ui, sans-serif;
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 body {
   /* background: url('/assets/images/arabic.jpg') repeat center center fixed; */
@@ -27,7 +12,7 @@ body {
   padding: 0;
   /* background: var(--background); */
   color: var(--foreground);
-  font-family: var(--font-poppins), sans-serif;
+  font-family: var(--font-fredoka), sans-serif;
 }
 
 body::before {
@@ -64,15 +49,97 @@ body::before {
 
 .animate-slide {
   animation: slide 30s linear infinite;
+  will-change: transform;
 }
 
 .animate-slide-reverse {
   animation: slide-reverse 30s linear infinite;
+  will-change: transform;
 }
-
-
-
 
 .main-container {
   padding-top: 80px;
+}
+
+/* 3D Book Floating Animations */
+@keyframes book-float-1 {
+  0%, 100% {
+    transform: rotate(-15deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-15deg) translateY(-20px);
+  }
+}
+
+@keyframes book-float-2 {
+  0%, 100% {
+    transform: rotate(5deg) translateX(32px) translateY(0px);
+  }
+  50% {
+    transform: rotate(5deg) translateX(32px) translateY(-15px);
+  }
+}
+
+@keyframes book-float-3 {
+  0%, 100% {
+    transform: rotate(15deg) translateX(-8px) translateY(16px);
+  }
+  50% {
+    transform: rotate(15deg) translateX(-8px) translateY(-4px);
+  }
+}
+
+@keyframes cap-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-5deg);
+  }
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+.animate-book-float-1 {
+  animation: book-float-1 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-book-float-2 {
+  animation: book-float-2 4.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-book-float-3 {
+  animation: book-float-3 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-cap-float {
+  animation: cap-float 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-star-twinkle-1 {
+  animation: star-twinkle 2s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.animate-star-twinkle-2 {
+  animation: star-twinkle 2.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.animate-star-twinkle-3 {
+  animation: star-twinkle 3s ease-in-out infinite;
+  will-change: opacity, transform;
 }

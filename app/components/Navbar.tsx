@@ -1,54 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+const navLinks = [
+  { name: "Beranda", href: "/" },
+  {
+    name: "Tentang",
+    dropdown: [
+      { name: "Profil Sekolah", href: "/tentang/profil" },
+      { name: "Mars Al-Badar Dangdeur", href: "/tentang/mars" },
+      { name: "Guru & Staff", href: "/tentang/gurustaff" },
+    ],
+  },
+  {
+    name: "Program",
+    dropdown: [
+      { name: "Manajemen Perkantoran", href: "/program/mp" },
+      { name: "Teknik Kendaraan Ringan", href: "/program/tkr" },
+      { name: "Teknik Sepeda Motor", href: "/program/tsm" },
+      { name: "Tata Boga (Kuliner)", href: "/program/kuliner" },
+      { name: "Ekstrakurikuler", href: "/program/ekstrakurikuler" },
+    ],
+  },
+  { name: "Fasilitas", href: "/fasilitas" },
+  { name: "Info PPDB", href: "/pendaftaran" },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
 
-  const navLinks = [
-    { name: "Beranda", href: "/" },
-    {
-      name: "Tentang",
-      dropdown: [
-        { name: "Sejarah", href: "/tentang/sejarah" },
-        { name: "Visi & Misi", href: "/tentang/visimisi" },
-        { name: "Mars Al-Badar", href: "/tentang/mars" },
-        { name: "Guru & Staff", href: "/tentang/gurustaff" },
-        { name: "Struktur Organisasi", href: "/tentang/strukturorg" },
-        { name: "Prestasi", href: "/tentang/prestasi" },
-      ],
-    },
-    {
-      name: "Program",
-      dropdown: [
-        { name: "Manajemen Perkantoran", href: "/program/mp" },
-        { name: "Teknik Kendaraan Ringan", href: "/program/tkr" },
-        { name: "Teknik Sepeda Motor", href: "/program/tsm" },
-        { name: "Tata Boga (Kuliner)", href: "/program/kuliner" },
-        { name: "Program Unggulan", href: "/program/unggulan" },
-      ],
-    },
-    {
-      name: "Kegiatan",
-      dropdown: [
-        { name: "Kegiatan Sekolah", href: "/kegiatan/sekolah" },
-        { name: "Kegiatan Pondok", href: "/kegiatan/pondok" },
-        { name: "Ekstrakurikuler", href: "/kegiatan/ekstrakurikuler" },
-        { name: "Kajian Kitab Kuning", href: "/kegiatan/kajiankitab" },
-      ],
-    },
-    { name: "Fasilitas", href: "/fasilitas" },
-    { name: "Pendaftaran", href: "/pendaftaran" },
-  ];
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setDropdownOpen(null);
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const toggleDropdown = (name: string) => {
-    setDropdownOpen(dropdownOpen === name ? null : name);
+    setDropdownOpen((prev) => (prev === name ? null : name));
   };
 
   const isActive = (href: string) => {
@@ -56,7 +59,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
+    <nav ref={navRef} className="bg-white shadow-sm fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-4">
         <div className="flex justify-between h-16 items-center">
           {/* Logo */}
@@ -64,7 +67,7 @@ export default function Navbar() {
             <Image src="/assets/images/albadar-logo.png" alt="Logo" width={40} height={40} className="h-10 w-10" />
             <span className="text-purple-700 font-bold text-sm sm:text-base leading-tight">
               SMKS Al Badar <br />
-              Tangerang
+              Dangdeur
             </span>
           </Link>
 
@@ -97,9 +100,13 @@ export default function Navbar() {
                 </Link>
               )
             )}
-
-            <Link href="/kontak" className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-full text-sm font-semibold">
-              Kontak
+            
+            {/* Login Button */}
+            <Link 
+              href="/login" 
+              className="ml-4 flex items-center gap-2 hover:bg-black hover:text-white bg-white text-black border border-gray-400 px-5 py-1 rounded-full font-bold text-sm transition-all active:scale-95"
+            >
+              Login
             </Link>
           </div>
 
@@ -146,8 +153,14 @@ export default function Navbar() {
               </Link>
             )
           )}
-          <Link href="/kontak" onClick={() => setIsOpen(false)} className="block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-full text-sm font-semibold mt-2">
-            Kontak
+          
+          {/* Mobile Login Button */}
+          <Link
+            href="/login"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-center gap-2 w-full mt-4 bg-sky-500 text-white py-3 rounded-xl font-bold transition-all active:scale-[0.98]"
+          >
+            Login
           </Link>
         </div>
       )}
