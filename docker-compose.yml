@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  webprofile_web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webprofile_web
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    # Port 3000 akan diakses melalui Nginx Proxy Manager
+    # Tidak perlu expose ke host, cukup dalam network
+    expose:
+      - "3000"
+    networks:
+      - proxy_network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  proxy_network:
+    external: true
