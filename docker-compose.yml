@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   webprofile_web:
-    image: webprofile-test:latest
+    image: ghcr.io/ahaydeid/web-profile-albadar:latest
     container_name: webprofile_web
     restart: unless-stopped
     environment:
