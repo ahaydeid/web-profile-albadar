@@ -17,20 +17,52 @@ export default function RegisterPage() {
     const [error, setError] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    function submit(e: FormEvent) {
+    async function submit(e: FormEvent) {
         e.preventDefault();
         setError("");
-
-        if (data.password !== data.confirmPassword) {
-            setError("Password dan konfirmasi password tidak sama!");
-            return;
-        }
-
         setIsLoading(true);
 
-        setTimeout(() => {
+        try {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            console.log('Registering to:', `${apiUrl}/api/ppdb/register`);
+            console.log('Payload:', { nama_lengkap: data.nama, email: data.username });
+
+            const response = await fetch(`${apiUrl}/api/ppdb/register`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nama_lengkap: data.nama,
+                    email: data.username,
+                    password: data.password,
+                }),
+            });
+
+            console.log('Response status:', response.status);
+            const result = await response.json();
+            console.log('Response data:', result);
+
+            if (!response.ok) {
+                // Show detailed error from backend
+                if (result.errors) {
+                    // Validation errors
+                    const errorMessages = Object.values(result.errors).flat().join(', ');
+                    setError(errorMessages);
+                } else {
+                    setError(result.message || "Terjadi kesalahan saat mendaftar");
+                }
+                setIsLoading(false);
+                return;
+            }
+
+            // Redirect to verify page with email parameter
+            window.location.href = `/verify?email=${encodeURIComponent(data.username)}`;
+        } catch (err) {
+            console.error('Registration error:', err);
+            setError("Tidak dapat terhubung ke server. Silakan coba lagi.");
             setIsLoading(false);
-        }, 1000);
+        }
     }
 
     return (
@@ -51,7 +83,7 @@ export default function RegisterPage() {
                         className="hidden md:flex items-center justify-center bg-purple-200 bg-no-repeat bg-center bg-cover relative"
                         style={{ backgroundImage: "url('/assets/images/bg-login.webp')" }}
                     >
-                        <div className="absolute inset-0 bg-purple-900/20" />
+                        <div className="absolute inset-0 bg-black/70" />
                         <div className="relative z-10 text-white text-center p-8">
                             <h2 className="text-3xl font-bold mb-2">Pendaftaran Akun</h2>
                             <p className="text-purple-100 font-medium">Bergabung dengan Civitas Al Badar</p>
@@ -62,7 +94,7 @@ export default function RegisterPage() {
                     <div className="px-6 md:px-14 flex flex-col justify-center py-10">
                         <div className="mb-8">
                             <h1 className="text-2xl font-semibold text-purple-700 mb-2">
-                                Daftar
+                                Daftar Akun
                             </h1>
                             <p className="text-sm text-gray-500 font-bold">
                                 SMKS Al Badar <span className="text-purple-700">Dangdeur</span>
@@ -124,7 +156,11 @@ export default function RegisterPage() {
                                 </label>
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
-                                    className="w-full border-b border-gray-300 py-2 pr-10 text-sm focus:outline-none focus:border-purple-600 transition-colors bg-transparent"
+                                    className={`w-full border-b py-2 pr-10 text-sm focus:outline-none transition-colors bg-transparent ${
+                                        data.confirmPassword && data.password !== data.confirmPassword
+                                            ? "border-red-500 focus:border-red-600"
+                                            : "border-gray-300 focus:border-purple-600"
+                                    }`}
                                     placeholder="Ulangi password"
                                     value={data.confirmPassword}
                                     onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
@@ -137,17 +173,23 @@ export default function RegisterPage() {
                                 >
                                     {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </button>
-                                {error && (
+                                {data.confirmPassword && data.password !== data.confirmPassword && (
                                     <p className="text-[10px] text-red-500 mt-1">
-                                        {error}
+                                        Password tidak cocok!
                                     </p>
                                 )}
                             </div>
 
+                            {error && (
+                                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                                    {error}
+                                </div>
+                            )}
+
                             <button
                                 type="submit"
-                                disabled={isLoading}
-                                className="w-full cursor-pointer bg-purple-700 hover:bg-purple-800 text-white text-sm font-bold py-3 rounded-full transition-all active:scale-95 mt-4"
+                                disabled={isLoading || (data.confirmPassword !== "" && data.password !== data.confirmPassword)}
+                                className="w-full cursor-pointer bg-purple-700 disabled:bg-gray-300 hover:bg-purple-800 text-white text-sm font-bold py-3 rounded-full transition-all active:scale-95 mt-4"
                             >
                                 Daftar
                             </button>

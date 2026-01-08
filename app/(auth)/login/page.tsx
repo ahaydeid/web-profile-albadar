@@ -12,16 +12,55 @@ export default function LoginPage() {
 
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    function submit(e: FormEvent) {
+    async function submit(e: FormEvent) {
         e.preventDefault();
+        setError("");
         setIsLoading(true);
 
-        // Simulasi loading selama 1 detik sesuai permintaan user
-        setTimeout(() => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/ppdb/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: data.username,
+                    password: data.password,
+                }),
+            });
+
+            const result = await response.json();
+
+            // Handle unverified email (403 Forbidden)
+            if (response.status === 403) {
+                window.location.href = `/verify?email=${encodeURIComponent(data.username)}`;
+                return;
+            }
+
+            if (!response.ok) {
+                setError(result.message || "Email atau password salah.");
+                setIsLoading(false);
+                return;
+            }
+
+            // Store token and redirect to dashboard
+            if (result.access_token) {
+                localStorage.setItem("access_token", result.access_token);
+                localStorage.setItem("token_type", result.token_type || "Bearer");
+                
+                // Store user info
+                if (result.user) {
+                    localStorage.setItem("user", JSON.stringify(result.user));
+                }
+                
+                window.location.href = "/dashboard";
+            }
+        } catch (err) {
+            setError("Tidak dapat terhubung ke server. Silakan coba lagi.");
             setIsLoading(false);
-            // Logic redirect atau error handling akan di sini jika ada BE
-        }, 1000);
+        }
     }
 
     return (
@@ -42,7 +81,7 @@ export default function LoginPage() {
                         className="hidden md:flex items-center justify-center bg-purple-200 bg-no-repeat bg-center bg-cover relative"
                         style={{ backgroundImage: "url('/assets/images/bg-login.webp')" }}
                     >
-                        <div className="absolute inset-0 bg-purple-900/20" />
+                        <div className="absolute inset-0 bg-black/70" />
                         <div className="relative z-10 text-white text-center p-8">
                             <h2 className="text-3xl font-bold mb-2">SMKS Al Badar</h2>
                             <p className="text-purple-100 font-medium">Dangdeur - Tangerang</p>
@@ -107,6 +146,12 @@ export default function LoginPage() {
                                     </Link>
                                 </div>
                             </div>
+
+                            {error && (
+                                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                                    {error}
+                                </div>
+                            )}
 
                             <button
                                 type="submit"

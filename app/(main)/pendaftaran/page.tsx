@@ -1,7 +1,73 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+interface Jurusan {
+  id: number;
+  kode: string;
+  nama: string;
+  kuota: number;
+  terisi: number;
+  sisa: number;
+}
+
+interface PPDBData {
+  gelombang: string;
+  tahun_ajaran: string;
+  periode: {
+    mulai: string;
+    selesai: string;
+    mulai_raw: string;
+    selesai_raw: string;
+  };
+  deskripsi: string;
+  panitia: string;
+  status: string;
+  kuota_jurusan: Jurusan[];
+}
 
 export default function PendaftaranPage() {
+  const [ppdbData, setPpdbData] = useState<PPDBData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasActivePPDB, setHasActivePPDB] = useState(true);
+
+  useEffect(() => {
+    async function fetchActivePPDB() {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        console.log('Fetching PPDB data from:', `${apiUrl}/api/ppdb/active-period`);
+        
+        const response = await fetch(`${apiUrl}/api/ppdb/active-period`);
+        
+        // Handle 404 or other HTTP errors
+        if (!response.ok) {
+          console.warn(`API returned ${response.status}: ${response.statusText}`);
+          setHasActivePPDB(false);
+          setIsLoading(false);
+          return;
+        }
+        
+        const result = await response.json();
+
+        if (result.success && result.data) {
+          setPpdbData(result.data);
+          setHasActivePPDB(true);
+        } else {
+          setHasActivePPDB(false);
+        }
+      } catch (error) {
+        console.error("Failed to fetch PPDB data:", error);
+        setHasActivePPDB(false);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchActivePPDB();
+  }, []);
+
   return (
-    <main className="bg-slate-50 text-slate-900 min-h-screen pb-20">
+    <main className="bg-slate-50 text-slate-900 min-h-screen pb-20" suppressHydrationWarning>
       {/* Hero Section */}
       <section className="bg-[#3B2F63] text-white py-16 mb-10">
         <div className="max-w-5xl mx-auto px-4 text-center">
@@ -15,67 +81,82 @@ export default function PendaftaranPage() {
 
       <section className="max-w-5xl mx-auto px-4">
         {/* PPDB Berjalan Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden mb-12 transform transition-all">
-          <div className="bg-sky-100 p-4 flex justify-between items-center text-white">
-            <h2 className="text-lg font-bold flex items-center gap-2 text-gray-800">
-              PPDB SEDANG BERJALAN
-            </h2>
-            <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-              </span>
-              <span className="text-gray-800 text-xs font-bold uppercase tracking-wider">Aktif</span>
-            </div>
+        {isLoading ? (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 p-12 mb-12 text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-purple-600 mx-auto mb-4"></div>
+            <p className="text-slate-500">Memuat informasi PPDB...</p>
           </div>
-          <div className="p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              {/* Info Utama */}
-              <div>
-                <div className="space-y-6">
-                  <div>
-                    <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Gelombang</p>
-                    <h3 className="text-2xl font-black text-[#3B2F63]">GELOMBANG 1</h3>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Periode Pendaftaran</p>
-                    <p className="text-lg font-semibold text-slate-700">01 Des 2025 – 30 Jan 2026</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Deskripsi</p>
-                    <p className="text-slate-600 leading-relaxed">
-                      Pendaftaran siswa baru untuk tahun ajaran 2026/2027 telah dimulai. Segera daftarkan diri Anda sebelum kuota setiap kejuruan terpenuhi.
-                    </p>
-                  </div>
-                </div>
+        ) : hasActivePPDB && ppdbData ? (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden mb-12 transform transition-all">
+            <div className="bg-sky-100 p-4 flex justify-between items-center text-white">
+              <h2 className="text-lg font-bold flex items-center gap-2 text-gray-800">
+                PPDB SEDANG BERJALAN
+              </h2>
+              <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                </span>
+                <span className="text-gray-800 text-xs font-bold uppercase tracking-wider">{ppdbData.status}</span>
               </div>
-
-              {/* Kuota Jurusan */}
-              <div className="bg-slate-50 rounded-xl p-6 border border-slate-100">
-                <h4 className="font-bold text-[#3B2F63] mb-4 flex items-center gap-2">
-                  Kuota Per Jurusan
-                </h4>
-                <div className="space-y-4">
-                  {[
-                    { name: "Teknik Kendaraan Ringan (TKR)", quota: "72 Siswa" },
-                    { name: "Teknik Sepeda Motor (TSM)", quota: "72 Siswa" },
-                    { name: "Kuliner (Tata Boga)", quota: "72 Siswa" },
-                  ].map((j, idx) => (
-                    <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm border border-slate-100">
-                      <span className="font-medium text-slate-700">{j.name}</span>
-                      <span className="bg-[#3B2F63] text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
-                        {j.quota}
-                      </span>
+            </div>
+            <div className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* Info Utama */}
+                <div>
+                  <div className="space-y-6">
+                    <div>
+                      <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Gelombang</p>
+                      <h3 className="text-2xl font-black text-[#3B2F63]">{ppdbData.gelombang.toUpperCase()}</h3>
                     </div>
-                  ))}
+                    <div>
+                      <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Tahun Ajaran</p>
+                      <p className="text-lg font-semibold text-slate-700">{ppdbData.tahun_ajaran}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Periode Pendaftaran</p>
+                      <p className="text-lg font-semibold text-slate-700">{ppdbData.periode.mulai} – {ppdbData.periode.selesai}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-slate-500 uppercase font-bold tracking-wider mb-1">Deskripsi</p>
+                      <p className="text-slate-600 leading-relaxed">
+                        {ppdbData.deskripsi}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <p className="mt-4 text-xs text-slate-400 italic">
-                  * Kuota dapat berubah sewaktu-waktu sesuai kebijakan sekolah.
-                </p>
+
+                {/* Kuota Jurusan */}
+                <div className="bg-slate-50 rounded-xl p-6 border border-slate-100">
+                  <h4 className="font-bold text-[#3B2F63] mb-4 flex items-center gap-2">
+                    Kuota Per Jurusan
+                  </h4>
+                  <div className="space-y-4">
+                    {ppdbData.kuota_jurusan.map((jurusan) => (
+                      <div key={jurusan.id} className="flex justify-between items-center bg-white p-3 rounded-lg shadow-sm border border-slate-100">
+                        <div className="flex flex-col">
+                          <span className="font-medium text-slate-700">{jurusan.nama} ({jurusan.kode})</span>
+                          <span className="text-xs text-slate-500">Terisi: {jurusan.terisi} / Sisa: {jurusan.sisa}</span>
+                        </div>
+                        <span className="bg-[#3B2F63] text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                          {jurusan.kuota} Siswa
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-4 text-xs text-slate-400 italic">
+                    * Kuota dapat berubah sewaktu-waktu sesuai kebijakan sekolah.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-8 mb-12 text-center">
+            <h3 className="text-xl font-bold text-yellow-800 mb-2">Tidak Ada PPDB Aktif</h3>
+            <p className="text-yellow-700">Saat ini tidak ada periode PPDB yang sedang berjalan. Silakan hubungi sekolah untuk informasi lebih lanjut.</p>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {/* Sisi Kiri: Prosedur */}
@@ -93,9 +174,9 @@ export default function PendaftaranPage() {
                     <span className="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs">A</span>
                     Proses Pendaftaran
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {["Mengisi formulir pendaftaran", "Melengkapi dokumen persyaratan", "Mengikuti tes seleksi masuk"].map((step, idx) => (
-                      <div key={idx} className="bg-slate-50 p-4 rounded-lg border border-slate-100 text-sm font-medium">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {["Pembukaan PPDB (aktif)", "Mengisi formulir pendaftaran", "Melengkapi dokumen persyaratan", "Mengikuti tes seleksi masuk"].map((step, idx) => (
+                      <div key={idx} className={`p-4 rounded-lg border text-sm font-medium ${idx === 0 ? 'bg-blue-50 border-blue-300 text-blue-800' : 'bg-slate-50 border-slate-100'}`}>
                         {step}
                       </div>
                     ))}

@@ -2,9 +2,7 @@ version: "3.9"
 
 services:
   webprofile_web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: webprofile-test:latest
     container_name: webprofile_web
     restart: unless-stopped
     environment:
